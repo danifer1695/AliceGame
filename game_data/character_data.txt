@@ -1,0 +1,30 @@
+<Character>
+	<Name>Card Guard, Guard</Name>
+	<Description>A card guard displaying the 'Hearts' symbol. Armed with a long, pointy spear they do not give Alice a friendly impression.</Description>
+	<Is_Enemy>1</Is_Enemy>
+	<Dialogue>Guard_01</Dialogue>
+</Character>
+<Character>
+	<Name>Cheshire Cat, Cheshire, Cat</Name>
+	<Description>A big, otherwordly purple cat. He's always grinning and seems to be willing yo help you out.</Description>
+	<Is_Enemy>0</Is_Enemy>
+	<Dialogue>Cheshire_01, Cheshire_02</Dialogue>
+</Character>
+<Character>
+	<Name>Bill the Lizard, Bill</Name>
+	<Description>Bill is a talking lizard who works for the Queen as a handyman. His overalls are stained with sut from cleaning the Castle's chimneys.</Description>
+	<Is_Enemy>0</Is_Enemy>
+	<Dialogue>Bill_01, Bill_02</Dialogue>
+</Character>
+<Character>
+	<Name>Dodo</Name>
+	<Description>A plump and rather flustered-looking Dodo, dressed in an ill-fitting uniform that seems just a bit too grand for him.</Description>
+	<Is_Enemy>0</Is_Enemy>
+	<Dialogue>Dodo_01</Dialogue>
+</Character>
+<Character>
+	<Name>Cunning Fox, Fox, Prisoner</Name>
+	<Description>Inhabiting one of Alice's neighboring cells, a sly-looking fox lounged against the wall, dressed in a ragged prisoner's uniform. His sharp eyes gleamed with mischief, and though the bars held him in, he carried himself with the confidence of someone who always had a trick up his sleeve.</Description>
+	<Is_Enemy>0</Is_Enemy>
+	<Dialogue>Fox_01</Dialogue>
+</Character>

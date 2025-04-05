@@ -1,0 +1,235 @@
+<Room>
+	<Name>Cell</Name>
+	<Description>a dark cell inside the Queen's castle. The only source of light is a small barred window to the outside. With the exception to the straw matress you awoke on, the room is completely bare.</Description>
+	<Coordinates>(0, 0)</Coordinates>
+	<Characters>Cheshire Cat</Characters>
+	<Items>Rock, Matress, Cell Window</Items>
+	<Is_Final>0</Is_Final>
+	<Door_List>
+		<Door>
+			<To>Cell Gallery</To>
+			<Locked>1</Locked>
+			<Key>Club Key</Key>
+		</Door>
+	</Door_List>
+</Room>
+<Room>
+	<Name>Cell Gallery</Name>
+	<Description>a long room featuring a row of cells lined up one after another. All of them occupied by shady creatures and individuals, except for the one you got out of.</Description>
+	<Coordinates>(0, 1)(-1,1)</Coordinates>
+	<Characters>Cunning Fox</Characters>
+	<Items></Items>
+	<Is_Final>0</Is_Final>
+	<Door_List>
+		<Door>
+			<To>Cell</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+		<Door>
+			<To>Armory</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+		<Door>
+			<To>Prison Corridor</To>
+			<Locked>1</Locked>
+			<Key>Spade Key</Key>
+		</Door>
+		<Door>
+			<To>Guard's Quarters</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+	</Door_List>
+</Room>
+<Room>
+	<Name>Guard's Quarters</Name>
+	<Description>a room where the Prison guards likely pass their time when idle. There are some round wooden tables with half emptied jars, dirty dishes and playing cards.</Description>
+	<Coordinates>(1, 1)</Coordinates>
+	<Characters>Card Guard</Characters>
+	<Items>Spade Key, Beverage</Items>
+	<Is_Final>0</Is_Final>
+	<Door_List>
+		<Door>
+			<To>Cell Gallery</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+	</Door_List>
+</Room>
+<Room>
+	<Name>Armory</Name>
+	<Description>a small room filled with all sorts of military gear. The room is covered corner to corner in racks holding all sorts of bizarre looking weapons and ornate shields. Better be careful, toppling anything over would cause a conmotion.</Description>
+	<Coordinates>(0, 2)</Coordinates>
+	<Characters></Characters>
+	<Items>Weapons, Beautiful Sword</Items>
+	<Is_Final>0</Is_Final>
+	<Door_List>
+		<Door>
+			<To>Cell Gallery</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+		<Door>
+			<To>Staff Hall</To>
+			<Locked>1</Locked>
+			<Key></Key>
+		</Door>
+	</Door_List>
+</Room>
+<Room>
+	<Name>Prison Corridor</Name>
+	<Description>a narrow dimly lit corridor connecting the Castle's prison to the rest of the undeground level.</Description>
+	<Coordinates>(-2, 1)(-2, 2)</Coordinates>
+	<Characters>Bill the Lizard</Characters>
+	<Items></Items>
+	<Is_Final>0</Is_Final>
+	<Door_List>
+		<Door>
+			<To>Cell Gallery</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+		<Door>
+			<To>Staff Hallway</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+		<Door>
+			<To>Dark Room</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+	</Door_List>
+</Room>
+<Room>
+	<Name>Dark Room</Name>
+	<Description>a pitch dark room. Can't see anything in here.</Description>
+	<Coordinates>(-3, 1)</Coordinates>
+	<Characters></Characters>
+	<Items></Items>
+	<Is_Final>0</Is_Final>
+	<Door_List>
+		<Door>
+			<To>Prison Corridor</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+	</Door_List>
+</Room>
+<Room>
+	<Name>Staff Hallway</Name>
+	<Description>a long passage connecting many different rooms. It seems to be used by guards and servants alike as they go on with their daily chores.</Description>
+	<Coordinates>(-2, 3)(-1, 3)</Coordinates>
+	<Characters></Characters>
+	<Items></Items>
+	<Is_Final>0</Is_Final>
+	<Door_List>
+		<Door>
+			<To>Broom Closet</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+		<Door>
+			<To>Staff Hall</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+		<Door>
+			<To>Storage Room</To>
+			<Locked>1</Locked>
+			<Key>Diamond Key</Key>
+		</Door>
+		<Door>
+			<To>Prison Corridor</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+	</Door_List>
+</Room>
+<Room>
+	<Name>Storage Room</Name>
+	<Description>a room lined with shelves, each packed with all manner of things needed to keep the castle in order.</Description>
+	<Coordinates>(-1, 2)</Coordinates>
+	<Characters></Characters>
+	<Items>Oil Lamp, Ornate Hookah, Shelves</Items>
+	<Is_Final>0</Is_Final>
+	<Door_List>
+		<Door>
+			<To>Staff Hallway</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+	</Door_List>
+</Room>
+<Room>
+	<Name>Broom Closet</Name>
+	<Description>a tiny broom closet, crammed with brooms, mops, and buckets. On the wall, a key chain hung from a hook, too high to reach.</Description>
+	<Coordinates>(-1, 4)</Coordinates>
+	<Characters></Characters>
+	<Items>Key Chain, Broom</Items>
+	<Is_Final>0</Is_Final>
+	<Door_List>
+		<Door>
+			<To>Staff Hallway</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+	</Door_List>
+</Room>
+<Room>
+	<Name>Staff Hall</Name>
+	<Description>a grand, open room; its ceiling soaring twice as high as any you'd seen in the rest of the subterranean level. Chairs and tables were scattered about, a cheerful fire crackled in the chimney, and a few small portraits of former Staff Masters hung on the walls. This, it seemed, was where the castle staff came to rest their weary feet.</Description>
+	<Coordinates>(0, 3)</Coordinates>
+	<Characters>Card Guard, Dodo</Characters>
+	<Items>Table, Plum Cake, Note</Items>
+	<Is_Final>0</Is_Final>
+	<Door_List>
+		<Door>
+			<To>Staff Master's Room</To>
+			<Locked>1</Locked>
+			<Key>Heart Key</Key>
+		</Door>
+		<Door>
+			<To>Outside</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+		<Door>
+			<To>Staff Hallway</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+		<Door>
+			<To>Armory</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+	</Door_List>
+</Room>
+<Room>
+	<Name>Staff Master's Room, smr</Name>
+	<Description> what seems to be the Castle's staff Master's private quarters. Relatively small for what one would expect for someone of that rank, the room was populated by a neatly tucked bed, a few family portraits on the walls, and a desk overflowing with all sorts of books and documents.</Description>
+	<Coordinates>(1, 3)</Coordinates>
+	<Characters></Characters>
+	<Items>Documents, Break Permit</Items>
+	<Is_Final>0</Is_Final>
+	<Door_List>
+		<Door>
+			<To>Staff Hall</To>
+			<Locked>0</Locked>
+			<Key></Key>
+		</Door>
+	</Door_List>
+</Room>
+<Room>
+	<Name>Outside</Name>
+	<Description>the castle's back entrance, leading straight into Wonderland's forests, fields, and freedom.</Description>
+	<Coordinates>(0, 4)</Coordinates>
+	<Characters></Characters>
+	<Items></Items>
+	<Is_Final>1</Is_Final>
+	<Door_List>
+	</Door_List>
+</Room>

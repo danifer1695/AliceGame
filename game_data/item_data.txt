@@ -1,0 +1,175 @@
+<Item>
+	<ID>1000</ID>
+	<Name>Rock</Name>
+	<Display>There's a rock on the ground.</Display>
+	<Description>A plain old rock you got from a bunch of rubble in your cell. Light enough to be thrown across a room.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1001</ID>
+	<Name>Club Key, Key</Name>
+	<Display>There's a key on the ground.</Display>
+	<Description>A metallic key. Its head is in the shape of the Club suite.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1002</ID>
+	<Name>Spade Key, Key</Name>
+	<Display>There's a key on the ground.</Display>
+	<Description>A metallic key. Its head is in the shape of the Spade suite.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1003</ID>
+	<Name>Diamond Key, Key</Name>
+	<Display>There's a key on the ground.</Display>
+	<Description>A metallic key. Its head is in the shape of the Diamond suite.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1004</ID>
+	<Name>Heart Key, Key</Name>
+	<Display>There's a key on the ground.</Display>
+	<Description>A metallic key. Its head is in the shape of the Heart suite.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1005</ID>
+	<Name>Beverage, Jar</Name>
+	<Display>There's a jar containing a funny-colored drink.</Display>
+	<Description>A half-empty jar of the drink the Guards favored on their time off - though too much of it seemed to leave them quite drowsy.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1006</ID>
+	<Name>Card Guard Spear, Spear</Name>
+	<Display>A Card Guard spear lies on the gound.</Display>
+	<Description>A spear, just like those carried by the Card Guards - long and topped with a sharp spade-shaped head.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1007</ID>
+	<Name>Weapons, Shields</Name>
+	<Display></Display>
+	<Description>The room bristled with weapons - swords, spears, and all manner of sharp things - while lavishly decorated shields lined the walls. Best not to touch anything; knocking one over would surely send the Guards rushing in.</Description>
+	<Can_Store>0</Can_Store>
+</Item>
+<Item>
+	<ID>1008</ID>
+	<Name>Key Chain, Keys</Name>
+	<Display></Display>
+	<Description>A key chain dangles from a hook on the wall. Far too high to reach with bare hands, Alice will need the help of something long and pointy to retrieve them.</Description>
+	<Can_Store>0</Can_Store>
+</Item>
+<Item>
+	<ID>1009</ID>
+	<Name>Oil Lamp, Lamp</Name>
+	<Display>There is an Oil Lamp here.</Display>
+	<Description>A shiny brass Oil Lamp, its glass chimney smudged with soot. Can be switched on and off.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1010</ID>
+	<Name>Servant Uniform, Staff Uniform, Uniform</Name>
+	<Display></Display>
+	<Description>A deep red uniform with black trim worn by every member of the Castle staff, each adorned with a spade-shaped emblem over the heart.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1011</ID>
+	<Name>Beautiful Sword, sword, item_treasure</Name>
+	<Display>There is a beautifully ornate sword nearby.</Display>
+	<Description>A most magnificent sword, its blade gleaming as if it had never known a single scratch. The hilt was adorned with intricate golden patterns, swirling and looping, and at its center sat a deep red gemstone.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1012</ID>
+	<Name>Ornate Hookah, Hookah, item_treasure</Name>
+	<Display>You see an Ornate Hookah.</Display>
+	<Description>A long-stemmed hookah with an ornate glass base, its coiling tube still carrying the scent of sweet smoke. Alice recognizes it at once - it belonged to the great blue Caterpillar.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1013</ID>
+	<Name>Ruby Ring, Ring, item_treasure</Name>
+	<Display></Display>
+	<Description>A beautiful Ruby studded ring worthy of a Queen. How it ended up in the Fox's paws is a question for another time.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1014</ID>
+	<Name>Documents, Papers, Desk</Name>
+	<Display></Display>
+	<Description>The desk was nearly swallowed by a mountain of papers - personal correspondence, shopping lists, staff break permits, and employee contracts - all meticulously arranged yet endlessly accumulating, a testament to the Staff Master's ceaseless duties.</Description>
+	<Can_Store>0</Can_Store>
+</Item>
+<Item>
+	<ID>1015</ID>
+	<Name>Break Permit, Staff Break Permit, Permit</Name>
+	<Display></Display>
+	<Description>An official document, signed by the Staff Master himself, granting the holder permission to step away from their duties - and even, if they so wish, beyond the castle walls.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1016</ID>
+	<Name>Matress, Straw Matress, Bed</Name>
+	<Display></Display>
+	<Description>An old, threadbare straw mattress you awoke on, its surface blotched with stains of every imaginable hue. A damp, musty stench clung to it, ensuring you'd rather not sleep on it ever again.</Description>
+	<Can_Store>0</Can_Store>
+</Item>
+<Item>
+	<ID>1017</ID>
+	<Name>Cell Window, Window</Name>
+	<Display></Display>
+	<Description>A small, barred window to the outside - keeping your dark, damp cell quite separate from the bright, rolling hills of Wonderland. Perched upon it, the Cheshire Cat grins down at you, looking most pleased with himself.</Description>
+	<Can_Store>0</Can_Store>
+</Item>
+<Item>
+	<ID>1018</ID>
+	<Name>Box</Name>
+	<Display></Display>
+	<Description>A box, containing neatly stacked pile of table cloths, soft as a whisper and far too fine for ordinary meals - they could only belong to the Royal Family. As you run your fingers over the delicate fabric, something glimmers between the folds - a Golden Coin, carefully tucked in.</Description>
+	<Can_Store>0</Can_Store>
+</Item>
+<Item>
+	<ID>1019</ID>
+	<Name>Coin, Chocolate Coin, Golden Coin, item_sweet</Name>
+	<Display></Display>
+	<Description>A shimmering Gold Coin.But a closer look reveals the truth: it's merely a chocolate coin, wrapped in a layer of shiny foil.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1020</ID>
+	<Name>Plum Cake, Cake, Slice, item_sweet</Name>
+	<Display></Display>
+	<Description>A dense, spiced cake slice with sweet plum pieces. Its exquisite smell makes your mouth water.</Description>
+	<Can_Store>1</Can_Store>
+</Item>
+<Item>
+	<ID>1021</ID>
+	<Name>Table, Tables</Name>
+	<Display></Display>
+	<Description>Tables where the Castle Staff probably sit and enjoy their meals and share the latest gossip. There's some empty cups of tea and a plate with a single leftover Plum Cake slice.</Description>
+	<Can_Store>0</Can_Store>
+</Item>
+<Item>
+	<ID>1022</ID>
+	<Name>Note</Name>
+	<Display>A note hangs from the Staff Master's Room door.</Display>
+	<Description>The note reads: "Gone on vacation - my old bones need a bit of sun! If there's any trouble, it'll have to wait till next week. Signed - the Staff Master."</Description>
+	<Can_Store>0</Can_Store>
+</Item>
+<Item>
+	<ID>1023</ID>
+	<Name>Broom, Brooms, Bucket, Buckets</Name>
+	<Display></Display>
+	<Description>A neat row of brooms leans against the wall, their bristles worn from years of sweeping the castle's endless halls. Beside them, a collection of buckets sits stacked one inside the other, each carrying the faint scent of soapy water and hard work.</Description>
+	<Can_Store>0</Can_Store>
+</Item>
+<Item>
+	<ID>1024</ID>
+	<Name>Shelves, Shelf</Name>
+	<Display></Display>
+	<Description>A row of shelves containing a diverse cast of objects necessary for the Castle's proper maintenance. Unfortunately, none of it looks like it would be of any use in your quest.</Description>
+	<Can_Store>0</Can_Store>
+</Item>
