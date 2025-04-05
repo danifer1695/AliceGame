@@ -36,7 +36,6 @@ private:
 	static std::string out_file_path;
 	static std::string CurrentDate();
 	
-	static bool developer_mode {false};
 	
 public:
 
