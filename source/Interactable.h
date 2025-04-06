@@ -45,7 +45,7 @@ public:
 	virtual void display() const = 0;
 	
 	//methods
-	bool contains_name(std::string input_name){
+	bool contains_name(std::string input_name) const{
 		for(auto str : name){
 			if(TO_LOWER(str) == TO_LOWER(input_name))
 				return true;

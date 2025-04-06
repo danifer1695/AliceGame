@@ -284,90 +284,9 @@
 		//first we check that the player has an object of this name in their inventory
 		if(Player::Get().contains_item_in_inventory(object)){
 			
-			//if just "key" is used to open a door
-			if(object == "key" 
-				&& (target == "door" || target == "")){
+			//if object is a key and it matches, return and exit
+			if(use_key(object, target)) action_success = true;
 				
-				try{
-					
-					Door* door = &Events::Get().choose_door();
-					
-					for(auto item : *Player::Get().get_inventory()){
-						
-						if(item.contains_name(object)){
-							std::string item_name = TO_LOWER(item.get_name());
-							
-							if(door->key_matches(item_name)){
-							
-								door->toggle_lock();
-								action_success = true;
-								Buffer::Get().add_contents("You unlocked the door!\n\n");
-								
-								Player::Get().remove_item_from_inventory(object);
-								Player::Get().get_current_room()->print();
-								return;
-							}
-						}
-					}
-				}catch(std::exception &ex){
-					
-					Buffer::Get().add_contents("There is no such Door!\n\n");
-					return;
-				}
-				
-				if(!action_success){
-					
-					Buffer::Get().add_contents("None of the keys you hold worked on that door.\n\n");
-					Player::Get().get_current_room()->print();
-					return;
-				}
-			}
-			
-			//use keys to unlock matching locked doors
-			if((object == "club key" || object == "spade key" || object == "heart key" || object == "diamond key")){
-				
-				if(target == "door" || target == ""){
-					
-					try{					
-						//get door instance
-						Door* door = &Events::Get().choose_door();
-						
-						if(door->key_matches(object)){
-						
-							door->toggle_lock();
-							action_success = true;
-							Buffer::Get().add_contents("You unlocked the door!\n\n");
-						}else{
-							
-							Buffer::Get().add_contents("The key did not work on that door.\n\n");
-						}
-						
-					}catch(std::exception &ex){
-						
-						Buffer::Get().add_contents("There is no such Door!\n\n");
-						return;
-					}
-				}
-				
-				for(auto& door : Player::Get().get_current_room()->get_door_vec()){
-					
-					//we check every door in the room to see if its name matches the input
-					if(target == TO_LOWER(door.get_points_to()) && 
-						door.get_is_locked() &&
-						door.key_matches(object)){
-						
-						door.toggle_lock();
-						action_success = true;
-						Buffer::Get().add_contents("You unlocked the door!\n\n");
-					}
-				}
-				
-				//if action was unsuccessful we print a message letting the player know
-				if(!action_success){
-						
-					Buffer::Get().add_contents("The key did not work on that door.!\n\n");
-				}
-			}
 			//if rock is used on armory, we call armory_distraction event
 			else if(object == "rock" && 
 					Player::Get().contains_item_in_inventory(object) && 
@@ -484,29 +403,6 @@
 	}
 	
 //******************************************************************************************************************************
-// display_characters()
-//******************************************************************************************************************************
-
-	void Action::display_characters(Room& target_room){
-		
-		//Display contained character's information
-			if(!target_room.get_character_vec().empty()){
-			
-				Buffer::Get().add_contents("These characters are present:\n");
-				
-				for(auto &character : target_room.get_character_vec()){
-					Buffer::Get().add_contents("-" + character.get_name());
-					//show if a character is not conscious.
-					if(!character.get_is_conscious()) Buffer::Get().add_contents(" (passed out)");
-					
-					Buffer::Get().add_contents("\n");
-				}
-				Buffer::Get().add_contents("\n");
-				
-			}
-	}
-	
-//******************************************************************************************************************************
 // wait()
 //******************************************************************************************************************************
 
@@ -538,3 +434,118 @@
 		Buffer::Get().add_contents("Quitting game. Goodbye.");
 		Screen::Get().refresh();
 	}
+	
+//******************************************************************************************************************************
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~HELPER METHODS~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+//******************************************************************************************************************************
+//******************************************************************************************************************************
+// display_characters()
+//******************************************************************************************************************************
+
+	void Action::display_characters(Room& target_room){
+		
+		//Display contained character's information
+			if(!target_room.get_character_vec().empty()){
+			
+				Buffer::Get().add_contents("These characters are present:\n");
+				
+				for(auto &character : target_room.get_character_vec()){
+					Buffer::Get().add_contents("-" + character.get_name());
+					//show if a character is not conscious.
+					if(!character.get_is_conscious()) Buffer::Get().add_contents(" (passed out)");
+					
+					Buffer::Get().add_contents("\n");
+				}
+				Buffer::Get().add_contents("\n");
+				
+			}
+	}
+	
+	
+//******************************************************************************************************************************
+// display_characters()
+//******************************************************************************************************************************
+
+	bool Action::use_key(const std::string& object, const std::string& target){
+		
+		auto inventory = Player::Get().get_inventory();
+		
+		for(auto& item : *inventory){
+			
+			//if the item does not match the input, continue the loop
+			if(!item.contains_name("key") || !item.contains_name(object)) continue;
+			
+			//if player types "door" or just "use key/key name"
+			if(target == "door" || target.empty()){
+			
+				try{					
+					//this gives the player a list of available doors and returns their choice
+					Door* door = Events::Get().choose_door();
+					std::string key_name = (object == "key") ? find_matching_key_name(*inventory, *door) : object;
+					
+					if(!key_name.empty() && door->key_matches(key_name)){
+						unlock_door(*door, key_name);
+						return true;
+					}
+					
+					Buffer::Get().add_contents("The key did not work on that door.\n\n");
+					return false;
+					
+				}catch(std::exception &ex){
+					Buffer::Get().add_contents("There is no such Door!\n\n");
+					return false;
+				}
+			}
+				
+			//if player types in the name of the room directly
+			for(auto& door : Player::Get().get_current_room()->get_door_vec()){
+				
+				//we check every door in the room to see if its name matches the input
+				if(target == TO_LOWER(door.get_points_to()) && 
+					door.get_is_locked()){
+					
+					std::string key_name = (object == "key") ? find_matching_key_name(*inventory, door) : object;
+					
+					if(!key_name.empty() && door.key_matches(key_name)){
+						unlock_door(door, key_name);
+						return true;
+					}
+				}
+			}
+			
+		}
+		
+		//if action was unsuccessful we print a message letting the player know
+		Buffer::Get().add_contents("The key did not work on that door.!\n\n");
+		return false;
+	}
+	
+//******************************************************************************************************************************
+// std::string Action::find_matching_key_name()
+//******************************************************************************************************************************
+
+	std::string Action::find_matching_key_name(const std::vector<Item>& inventory, const Door& door){
+		
+		//we check every item in the inventory. first if they contain the name "key", and second if their 
+		//main name matches the selected door key.
+		for(const auto& item : inventory){
+			if(item.contains_name("key") && door.key_matches(item.get_name()))
+				return TO_LOWER(item.get_name());
+		}
+		
+		return "";
+	}
+
+//******************************************************************************************************************************
+// display_characters()
+//******************************************************************************************************************************
+
+	void Action::unlock_door(Door& door, const std::string& key_name){
+		
+		door.toggle_lock();
+		Buffer::Get().add_contents("You unlocked the door!\n\n");
+	}
+
+//******************************************************************************************************************************
+// display_characters()
+//******************************************************************************************************************************

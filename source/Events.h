@@ -48,7 +48,7 @@ public:
 	void talk_to_cheshire();
 	void talk_to_fox();
 	void help();
-	Door& choose_door();
+	Door* choose_door();
 	bool armory_distraction();
 	bool guard_permit_check();
 	

@@ -42,7 +42,7 @@
 		Buffer::Get().add_contents("\n\nYou are thrown back into your cell, and a day passes.\n\nPress enter to continue.");
 		
 		Screen::Get().refresh();
-		ENTER_TO_CONTINUE;
+		std::cin.get();
 		
 		//Send player back to square one
 		Player::Get().set_current_room(Map::Get().get_room_at_coor(Coordinates(0, 0)));
@@ -66,7 +66,7 @@
 		Buffer::Get().add_contents("\n\nGAME OVER\n\nPress enter to exit the game.");
 		
 		Screen::Get().refresh();
-		ENTER_TO_CONTINUE;
+		std::cin.get();
 		
 		throw 0;//Exception 0 breaks the game loop
 		
@@ -439,7 +439,7 @@
 // choose_door()
 //******************************************************************************************************************************
 	
-	Door& Events::choose_door(){
+	Door* Events::choose_door(){
 		
 		Buffer::Get().add_contents("Which door?\n\n");
 		
@@ -456,7 +456,8 @@
 		
 		for(auto& door : *door_vec){
 			if(TO_LOWER(door.get_points_to()) == TO_LOWER(response)){
-				return door;
+				Door* ptr = &door;
+				return ptr;
 			}
 		}
 		

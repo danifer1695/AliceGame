@@ -30,6 +30,9 @@ private:
 	
 	//helper functions
 	static void display_characters(Room& target_room);
+	static bool use_key(const std::string& object, const std::string& target);
+	static std::string find_matching_key_name(const std::vector<Item>& inventory, const Door& door);
+	static void unlock_door(Door& door, const std::string& key_name);
 	
 public:
 	

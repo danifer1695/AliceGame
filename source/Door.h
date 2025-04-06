@@ -22,7 +22,7 @@ public:
 	//Methods
 	void display();
 	void toggle_lock(){is_locked = !is_locked;}
-	bool key_matches(std::string key_name);
+	bool key_matches(std::string key_name) const;
 	
 	//Getters
 	std::string get_points_to(){return points_to;}

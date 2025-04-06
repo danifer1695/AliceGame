@@ -18,11 +18,11 @@
 // key_matches()
 //******************************************************************************************************************************
 	
-	bool Door::key_matches(std::string input_key_name){
+	bool Door::key_matches(std::string input_key_name) const{
 		
 		for(auto& name : ItemDatabase::Get().get_item_by_name(key_name).get_name_vec()){
 			
-			if(TO_LOWER(name) == input_key_name)
+			if(TO_LOWER(name) == TO_LOWER(input_key_name))
 				return true;
 		}
 		return false;
