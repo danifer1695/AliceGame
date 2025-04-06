@@ -38,7 +38,7 @@ private:
 	bool sweets_completed {false};
 	
 	//debugging
-	bool teleport {true};
+	bool teleport {false};
 	
 public:
 
