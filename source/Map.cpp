@@ -249,10 +249,27 @@
 		
 		for(auto room : room_vec){
 			
-			if(TO_LOWER(room->get_name()) == name_lower)
+			if(room->contains_name(name))
 				return room;
 		}
 		
 		//we will catch this in Action::move_to()
 		throw std::runtime_error("Room named " + name + " not found.");
+	}
+	
+//******************************************************************************************************************************
+// contains_room()
+//******************************************************************************************************************************
+
+	bool Map::contains_room(std::string name){
+		
+		std::string name_lower = TO_LOWER(name);
+		
+		for(auto room : room_vec){
+			
+			if(room->contains_name(name))
+				return true;
+		}
+		
+		return false;
 	}

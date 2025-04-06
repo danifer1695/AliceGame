@@ -40,6 +40,9 @@ public:
 	std::shared_ptr<Room> get_room_at_coor(Coordinates coor) const;
 	std::shared_ptr<Room> get_room(const std::string &name);
 	
+	//methods
+	bool contains_room(std::string name);
+	
 	//Helper methods
 	std::vector<std::string> raw_data_string_to_object_data_string(const std::string &data);
 	void load_database();

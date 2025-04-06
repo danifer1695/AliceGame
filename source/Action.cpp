@@ -8,6 +8,14 @@
 		
 		bool found {false};//checks whether the input is a valid room
 		
+		//if name is invalid
+		if(!Map::Get().contains_room(input)){
+			Buffer::Get().add_contents("Go where?\n\n");
+			GAME_ERROR("Room \"" + input + "\" not found.");
+			Player::Get().get_current_room()->print();
+			return;
+		}
+		
 		//When we go to the Outside, first we check the player holds the permit, by calling Events::guard_permit_check
 		if(Player::Get().get_current_room()->get_name() == "Staff Hall" &&
 		  input == "outside"){
@@ -30,13 +38,13 @@
 		}
 		
 
-		//if input is not a cardinal direction, we look for room names in available doors.
+		//we look for room names in available doors.
 		for(auto& door : Player::Get().get_current_room()->get_door_vec()){
 			if(input == TO_LOWER(door.get_points_to()) || Player::Get().can_teleport()){
 				
 				found = true;
 				if(door.get_is_locked() && !Player::Get().can_teleport()){
-					if(door.get_key_name() != "")
+					if(!door.get_key_name().empty())
 						Buffer::Get().add_contents("The door is locked. It needs a " + door.get_key_name() + ".\n\n");
 					else
 						Buffer::Get().add_contents("The door is locked from the other side.\n\n");
@@ -51,6 +59,12 @@
 				//set current room to the one we're going to
 				Player::Get().set_current_room(input);
 				break;
+			}else{
+				//if no door connects to input
+				Buffer::Get().add_contents("Go where?\n\n");
+				GAME_ERROR("Room \"" + input + "\" not found.");
+				Player::Get().get_current_room()->print();
+				return;
 			}
 		}
 		
@@ -65,9 +79,9 @@
 		//Check if there is an enemy in the room
 		if(Player::Get().get_current_room()->contains_enemy() &&
 		   !Player::Get().is_disguised()){
-			GAME_LOG("Enemy present.");
-			Buffer::Get().add_contents("As you step into the room a Card Guard notices you:\n");
-			Events::Get().get_caught();
+				GAME_LOG("Enemy present.");
+				Buffer::Get().add_contents("As you step into the room a Card Guard notices you:\n");
+				Events::Get().get_caught();
 			
 		}
 		//Check if new room is the final room which ends the game.
@@ -288,9 +302,7 @@
 			if(use_key(object, target)) action_success = true;
 				
 			//if rock is used on armory, we call armory_distraction event
-			else if(object == "rock" && 
-					Player::Get().contains_item_in_inventory(object) && 
-					(target == "armory" || target == "weapons" || target == "shields")){
+			else if(object == "rock" && (target == "armory" || target == "weapons" || target == "shields")){
 				
 						action_success = Events::Get().armory_distraction();
 						
@@ -298,16 +310,14 @@
 			
 			//if spear is used on key chain
 			else if(ItemDatabase::Get().get_item_by_name("Spear").contains_name(object) && 
-					Player::Get().contains_item_in_inventory(object) && 
 					Player::Get().get_current_room()->get_name() == "Broom Closet" &&
-					(target == "key chain" || target == "keys" || target == "")){
+					ItemDatabase::Get().get_item_by_name("Key Chain").contains_name(target)){
 						
 						Events::Get().get_diamond_key();
 						action_success = true;
 			}
 			//if lamp is used in the Dark room
-			else if((object == "lamp" || object == "oil lamp")&& 
-					Player::Get().contains_item_in_inventory(object) && 
+			else if(ItemDatabase::Get().get_item_by_name("Oil Lamp").contains_name(object)&& 
 					Player::Get().get_current_room()->get_name() == "Dark Room" &&
 					(target == "room" || target == "dark room"|| target == "")){
 						
@@ -315,8 +325,7 @@
 						action_success = true;
 			}
 			//if servant uniform is used
-			else if((object == "uniform" || object == "servant uniform" || object == "staff uniform") && 
-					Player::Get().contains_item_in_inventory(object)){
+			else if(ItemDatabase::Get().get_item_by_name("Servant Uniform").contains_name(object)){
 						
 						Player::Get().remove_item_from_inventory(object);
 						Screen::Get().refresh();
@@ -324,8 +333,7 @@
 						return;
 			}
 			//if beverage is used
-			else if(ItemDatabase::Get().get_item_by_name("Beverage").contains_name(object) && 
-					Player::Get().contains_item_in_inventory(object)){
+			else if(ItemDatabase::Get().get_item_by_name("Beverage").contains_name(object)){
 						
 						Buffer::Get().add_contents("You wouldn't want to drink that. It seems to leave the guards all sleepy!");
 						Buffer::Get().add_contents("\n\nPress enter to continue.");

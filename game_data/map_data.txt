@@ -44,7 +44,7 @@
 	</Door_List>
 </Room>
 <Room>
-	<Name>Guard's Quarters</Name>
+	<Name>Guard's Quarters, Guards Quarters</Name>
 	<Description>a room where the Prison guards likely pass their time when idle. There are some round wooden tables with half emptied jars, dirty dishes and playing cards.</Description>
 	<Coordinates>(1, 1)</Coordinates>
 	<Characters>Card Guard</Characters>
