@@ -257,13 +257,13 @@
 
 	void Action::use(const std::string &input){
 		
-		std::stringstream ss (input);
+		std::string object, target, word, target_temp; 
 		std::unordered_set<std::string> stop_words = {"at", "to", "on", "in", "with", "towards", "up"};
 		//if we get: use "key on door", key is the object, door is the target
 		//word is a variable we will use while extracting words from the string stream
 		//target_temp will hold a candidate word for target while iterating through the stream.
-		std::string object, target, word, target_temp; 
 		
+		std::stringstream ss (input);
 		//Now we get the second part of the input.
 		//we have to be able to extract the right word into the target
 		bool found_stop {false};
