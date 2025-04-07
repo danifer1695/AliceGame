@@ -25,10 +25,15 @@
 //******************************************************************************************************************************
 
 	void Screen::print_info_panel(){
+		
+		//null check
+		std::shared_ptr<Room> room = Player::Get().get_current_room();
+		std::string room_name = room ? room->get_name() : "???";
+		
 		std::string row1 (width, '=');
 		std::cout 	<< row1 << std::endl;
 		std::cout 	<< "= " << std::setw(23) << std::left << std::setfill(' ') << "Day: " + std::to_string(Player::Get().get_current_day()) <<
-							  std::setw(23) << std::right << std::setfill(' ') << "Room: " + Player::Get().get_current_room()->get_name() << " =" << std::endl;
+							  std::setw(23) << std::right << std::setfill(' ') << "Room: " + room_name << " =" << std::endl;
 		std::cout 	<< row1 << std::endl;
 	}
 	
@@ -66,7 +71,7 @@
 			}
 		}
 		
-		for(int i = 0, j = 0 ; i < buffer.length(); i++, j++){
+		for(int i = 0, j = 0 ; i < buffer.length() && j < to_print.length(); i++, j++){
 			
 			//if the input text has an \n we just skip to the next row by adding
 			//the max width of the paragraph minus the modulus of i and (width + 1), to i
@@ -91,7 +96,7 @@
 			//if the full word doesnt fit, we skip a line
 			if(word_end != std::string::npos && !word_fits){
 				i += (width - (i % row_length));
-				j--;
+				if (j > 0) j--;
 				continue;
 			}
 			

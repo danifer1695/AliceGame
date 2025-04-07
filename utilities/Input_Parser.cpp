@@ -29,19 +29,21 @@
 		//Now we get the second part of the input.
 		//we have to be able to extract the right word into the object, so if the user entered
 		// "look at room" we have to pass the stop word "at" and asign room as the objective
-		bool found_stop {false};
+		bool look_for_stop {true};
 		
 		while(ss >> word){
 			//We pass stop words
-			if(stop_words.find(word) != stop_words.end() && !found_stop){
+			if(stop_words.find(word) != stop_words.end() && look_for_stop){
 				//If unordered_set.find() does not find anything it returns unordered_set.end();
-				found_stop = true;
+				//stop looking for stop words if not found right after the verb
+				look_for_stop = true;
 				continue;
 			}
 			//if object_temp is not empty it means object might be a composite word like "chesire cat" so we add a space
 			if(!object_temp.empty())
 				object_temp += " "; 
 			object_temp += word;
+			look_for_stop = false;
 		}
 		object = object_temp;
 		

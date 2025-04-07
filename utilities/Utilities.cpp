@@ -29,6 +29,24 @@
 	}
 
 //******************************************************************************************************************************
+// extract_bool()
+//******************************************************************************************************************************
+
+	bool Utilities::extract_bool(const std::string &data, const size_t &pos, const std::string &start_string, const std::string &end_string){
+		
+		try{
+			
+			int to_bool = std::stoi(extract_string(data, pos, start_string, end_string));
+			bool final_bool = (to_bool == 0) ? false : true;
+			return final_bool;
+			
+		}catch(std::exception &ex){
+			GAME_ERROR("This function only takes int booleans.");
+		}
+		return false;
+	}
+
+//******************************************************************************************************************************
 // ifstream_to_string()
 //******************************************************************************************************************************
 

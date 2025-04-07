@@ -134,3 +134,20 @@
 		}
 		return id;
 	}
+	
+//******************************************************************************************************************************
+// item_is_of_type()
+//******************************************************************************************************************************
+	
+	bool ItemDatabase::item_is_of_type(std::string input, std::string type){
+		
+		for (auto item : items){
+			if(!item.contains_name(type)) continue;
+			
+			else if(item.contains_name(input)){
+				
+				return true;
+			}
+		}
+		return false;
+	}

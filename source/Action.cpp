@@ -59,12 +59,6 @@
 				//set current room to the one we're going to
 				Player::Get().set_current_room(input);
 				break;
-			}else{
-				//if no door connects to input
-				Buffer::Get().add_contents("Go where?\n\n");
-				GAME_ERROR("Room \"" + input + "\" not found.");
-				Player::Get().get_current_room()->print();
-				return;
 			}
 		}
 		
@@ -268,10 +262,12 @@
 		//we have to be able to extract the right word into the target
 		bool found_stop {false};
 		while(ss >> word){
+			GAME_LOG(word);
 			//We pass stop words
 			if(stop_words.find(word) != stop_words.end() && !found_stop){
 				//If unordered_set.find() does not find anything it returns unordered_set.end();
 				found_stop = true;
+				GAME_LOG("word " + word + " is a stop word.");
 				continue;
 			}
 			//if target_temp is not empty it means object might be a composite word like "chesire cat" so we add a space
@@ -280,12 +276,14 @@
 				if(!object.empty())
 					object += " "; 
 				object += word;
+				GAME_LOG("word " + word + " goes to object.");
 			}	
 			if(found_stop){
 				
 				if(!target_temp.empty())
 					target_temp += " "; 
 				target_temp += word;
+				GAME_LOG("word " + word + " goes to target.");
 			}
 		}
 		target = target_temp;
@@ -298,11 +296,15 @@
 		//first we check that the player has an object of this name in their inventory
 		if(Player::Get().contains_item_in_inventory(object)){
 			
-			//if object is a key and it matches, return and exit
-			if(use_key(object, target)) action_success = true;
+			//if object is of type key and it matches, return and exit
+			if(ItemDatabase::Get().item_is_of_type(object, "key")){
+				
+				action_success = use_key(object, target);
+			}
 				
 			//if rock is used on armory, we call armory_distraction event
-			else if(object == "rock" && (target == "armory" || target == "weapons" || target == "shields")){
+			else if(ItemDatabase::Get().item_is_of_type(object, "rock") && 
+				(target == "armory" || target == "weapons" || target == "shields" || target == "shield" || target.empty())){
 				
 						action_success = Events::Get().armory_distraction();
 						
@@ -351,7 +353,7 @@
 		else{
 			
 			GAME_ERROR("Item " + object + " not found. Does the name match the one in item_data?");
-			Buffer::Get().add_contents("You dont have a " + object + ".\n\n");
+			Buffer::Get().add_contents("Use what?".\n\n");
 		}
 		
 		//Remove item from inventory
@@ -431,6 +433,7 @@
 	void Action::help(){
 		
 		Events::Get().help();
+		Player::Get().get_current_room()->print();
 	}
 	
 //******************************************************************************************************************************

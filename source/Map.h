@@ -19,6 +19,8 @@
 #include "ItemDatabase.h"
 #include "CharacterDatabase.h"
 
+class Player;
+
 class Map{
 	
 private:

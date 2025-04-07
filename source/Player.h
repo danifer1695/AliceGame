@@ -83,6 +83,7 @@ public:
 	void set_treasure_completed(bool set){treasure_completed = set;}
 	void set_sweets_quest_started(bool set){sweets_quest_started = set;}
 	void set_sweets_completed(bool set){sweets_completed = set;}
+	void set_teleport(bool set){teleport = set;}
 	
 	//Methods
 	void add_treasure_collected() {treasure_collected++;}

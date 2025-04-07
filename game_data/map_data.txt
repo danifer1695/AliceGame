@@ -1,3 +1,4 @@
+<Teleport>1</Teleport>
 <Room>
 	<Name>Cell</Name>
 	<Description>a dark cell inside the Queen's castle. The only source of light is a small barred window to the outside. With the exception to the straw matress you awoke on, the room is completely bare.</Description>
@@ -60,7 +61,7 @@
 </Room>
 <Room>
 	<Name>Armory</Name>
-	<Description>a small room filled with all sorts of military gear. The room is covered corner to corner in racks holding all sorts of bizarre looking weapons and ornate shields. Better be careful, toppling anything over would cause a conmotion.</Description>
+	<Description>a small room filled with all sorts of military gear. The room is covered corner to corner in racks holding all sorts of bizarre looking weapons and ornate shields. Better be careful, toppling anything over would cause a commotion.</Description>
 	<Coordinates>(0, 2)</Coordinates>
 	<Characters></Characters>
 	<Items>Weapons, Beautiful Sword</Items>

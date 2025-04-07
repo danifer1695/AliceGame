@@ -517,7 +517,7 @@
 		
 		Buffer::Get().add_contents("\n\nThat's it! Have fun! Press enter to continue.");
 		Screen::Get().refresh();
-		ENTER_TO_CONTINUE;
+		std::cin.get();
 	}
 	
 //******************************************************************************************************************************

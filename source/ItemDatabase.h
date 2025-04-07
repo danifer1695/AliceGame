@@ -31,6 +31,7 @@ public:
 	static ItemDatabase& Get();
 	Item get_item_by_name(std::string name);
 	int get_item_id(std::string name);
+	bool item_is_of_type(std::string input, std::string type);
 	
 	//Getters
 	std::vector<Item> get_database() {return items;}

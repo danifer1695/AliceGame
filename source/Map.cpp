@@ -1,4 +1,5 @@
 #include "Map.h"
+#include "Player.h"
 
 
 //******************************************************************************************************************************
@@ -66,6 +67,8 @@
 		size_t index{0};
 		size_t end{0};
 		std::string temp{};
+		
+		Player::Get().set_teleport(EXTRACT_BOOL(data, 0, "<Teleport>", "</Teleport>"));
 		
 		while(end != std::string::npos && index < data.length()){
 			std::string end_string = "</Room>";
