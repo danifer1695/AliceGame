@@ -472,7 +472,7 @@
 	
 	void Events::help(){
 		
-		Buffer::Get().add_contents("~~~~~~~~~~ HELP MENU (1 / 5) ~~~~~~~~~~");
+		Buffer::Get().add_contents("~~~~~~~~~~ HELP MENU (1 / 6) ~~~~~~~~~~");
 		Buffer::Get().add_contents("\nIn this game you will take control of Alice and guide her out of the Queen of Hearts' Castle Prison. To achieve that you will talk to characters, use tools and interact with the environment. Interactable characters and items will often be listed for you in the game screen as such:\n");
 		Buffer::Get().add_contents("\"There's a rock on the ground.\"\n");
 		Buffer::Get().add_contents("\"These Characters are present: Cheshire Cat\"\n");
@@ -482,7 +482,7 @@
 		Screen::Get().refresh();
 		std::cin.get();
 		
-		Buffer::Get().add_contents("~~~~~~~~~~ HELP MENU (2 / 5) ~~~~~~~~~~");
+		Buffer::Get().add_contents("~~~~~~~~~~ HELP MENU (2 / 6) ~~~~~~~~~~");
 		Buffer::Get().add_contents("\nThe way you will interact with the world is through written commands. The game does not differentiate between upper and lower cases, so there is no need to worry about matching the casing of the object you want to interact with. Here is a list of the main commands available to you:");
 		Buffer::Get().add_contents("\n\n-\"Go to\" + Room name: This will move Alice from your current position to any of its connecting rooms.");
 		Buffer::Get().add_contents("\n-\"Inspect\" + Object: This command will display a more detailed description of any item, character or room. To get a better picture of your surroundings, type \"inspect room\".");
@@ -491,7 +491,7 @@
 		Screen::Get().refresh();
 		std::cin.get();
 		
-		Buffer::Get().add_contents("~~~~~~~~~~ HELP MENU (3 / 5) ~~~~~~~~~~");
+		Buffer::Get().add_contents("~~~~~~~~~~ HELP MENU (3 / 6) ~~~~~~~~~~");
 		Buffer::Get().add_contents("\n-\"Peek\" + Room name: Sometimes you might want to get an idea of what the room ahead of you looks like before you actually step inside to avoid any potential danger. The \"Peek\" command will let you do just that. It will give you a description of the room ahead of you, along with a list of any characters present - but it will not tell you what objects lie inside.");
 		Buffer::Get().add_contents("\n-\"Use\" + Object: Utilize this command to make use of any of the items in your inventory. Sometimes, the command will require a target like such: \"use Club Key on Cell Gallery\".");
 		Buffer::Get().add_contents("\n-\"Take\" + Object: This command will let you take an object from the environment and add it to your inventory.");
@@ -500,7 +500,7 @@
 		Screen::Get().refresh();
 		std::cin.get();
 		
-		Buffer::Get().add_contents("~~~~~~~~~~ HELP MENU (4 / 5) ~~~~~~~~~~");
+		Buffer::Get().add_contents("~~~~~~~~~~ HELP MENU (4 / 6) ~~~~~~~~~~");
 		Buffer::Get().add_contents("\n-\"Drop\" + Object: Use this command if you wish to drop an object from your inventory onto the environment.");
 		Buffer::Get().add_contents("\n-\"Inventory\": Type this command to see the contents of your inventory.");
 		Buffer::Get().add_contents("\n-\"Help\": If you need a reminder of the game's functionalities, use this command to open this same help menu at any point during the game.");
@@ -509,10 +509,16 @@
 		Screen::Get().refresh();
 		std::cin.get();
 		
-		Buffer::Get().add_contents("~~~~~~~~~~ HELP MENU (5 / 5) ~~~~~~~~~~");
+		Buffer::Get().add_contents("~~~~~~~~~~ HELP MENU (5 / 6) ~~~~~~~~~~");
 		Buffer::Get().add_contents("\n-\"Quit\": Enter this command if you wish to end the game. Please be mindful that there is no game saving function in this program, so should you want to play again you will have to start from the beginning!");
 		Buffer::Get().add_contents("\n\nThese are not all the commands available for you to use in the game, so feel free to experiment!");
 		Buffer::Get().add_contents("\nSomething else to note is that the game accepts a variety of words to refer to the same command or item. For example, entering \"Talk to Cheshire Cat\" and \"Speak to Cat\" will achieve the same thing.");
+		
+		Buffer::Get().add_contents("\n\nPress enter to continue.");
+		Screen::Get().refresh();
+		std::cin.get();
+		
+		Buffer::Get().add_contents("~~~~~~~~~~ HELP MENU (6 / 6) ~~~~~~~~~~");
 		Buffer::Get().add_contents("\nFinally, if a command you are trying to use does not work, it probably means it is not included in the game's logic, so please try a different phrasing.");
 		
 		Buffer::Get().add_contents("\n\nThat's it! Have fun! Press enter to continue.");

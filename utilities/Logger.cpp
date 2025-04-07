@@ -104,7 +104,7 @@ void Logger::Log(const std::string message){
 	Set_Color(GREEN);
 	
 	std::string to_print = CurrentDate() + " LOG: " + "- " + message + "\n";
-	std::cout << to_print;
+	//std::cout << to_print;
 	
 	Input_Manager::Get().output_line(to_print);
 	
@@ -126,7 +126,7 @@ void Logger::Error(const std::string_view message, std::source_location location
 	" FUNC: " + location.function_name() + 
 	" LINE: " + std::to_string(location.line()) + "\n"};
 	
-	std::cout << to_print;
+	//std::cout << to_print;
 	
 	//Now we write the message on the logs file
 	Input_Manager::Get().output_line(to_print);

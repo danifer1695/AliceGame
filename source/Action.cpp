@@ -262,12 +262,10 @@
 		//we have to be able to extract the right word into the target
 		bool found_stop {false};
 		while(ss >> word){
-			GAME_LOG(word);
 			//We pass stop words
 			if(stop_words.find(word) != stop_words.end() && !found_stop){
 				//If unordered_set.find() does not find anything it returns unordered_set.end();
 				found_stop = true;
-				GAME_LOG("word " + word + " is a stop word.");
 				continue;
 			}
 			//if target_temp is not empty it means object might be a composite word like "chesire cat" so we add a space
@@ -276,14 +274,12 @@
 				if(!object.empty())
 					object += " "; 
 				object += word;
-				GAME_LOG("word " + word + " goes to object.");
 			}	
 			if(found_stop){
 				
 				if(!target_temp.empty())
 					target_temp += " "; 
 				target_temp += word;
-				GAME_LOG("word " + word + " goes to target.");
 			}
 		}
 		target = target_temp;
@@ -353,7 +349,7 @@
 		else{
 			
 			GAME_ERROR("Item " + object + " not found. Does the name match the one in item_data?");
-			Buffer::Get().add_contents("Use what?".\n\n");
+			Buffer::Get().add_contents("Use what?\n\n");
 		}
 		
 		//Remove item from inventory

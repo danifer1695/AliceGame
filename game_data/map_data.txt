@@ -1,4 +1,4 @@
-<Teleport>1</Teleport>
+<Teleport>0</Teleport>
 <Room>
 	<Name>Cell</Name>
 	<Description>a dark cell inside the Queen's castle. The only source of light is a small barred window to the outside. With the exception to the straw matress you awoke on, the room is completely bare.</Description>
