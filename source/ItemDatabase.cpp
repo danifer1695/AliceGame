@@ -42,11 +42,9 @@
 			std::string name = EXTRACT_STRING(str, 0, "<Name>", "</Name>");
 			std::string display = EXTRACT_STRING(str, 0, "<Display>", "</Display");
 			std::string description = EXTRACT_STRING(str, 0, "<Description>", "</Description");
-			int can_store = std::stoi(EXTRACT_STRING(str, 0, "<Can_Store>", "</Can_Store>"));
-			//We convert can_store to a true bool using a conditional expression
-			bool can_store_bool = (can_store == 0) ? false : true;
+			bool can_store = EXTRACT_BOOL(str, 0, "<Can_Store>", "</Can_Store>");
 			
-			items.push_back(Item(id, name, description, display, can_store_bool));
+			items.push_back(Item(id, name, description, display, can_store));
 		}
 		
 	}

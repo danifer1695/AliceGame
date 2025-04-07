@@ -46,12 +46,11 @@
 			std::vector<Coordinates> coordinates = extract_coordinates(EXTRACT_STRING(str, 0, "<Can_Store>", "</Can_Store>"));
 			std::vector<Item> items_vec = fill_items_vec(EXTRACT_STRING(str, 0, "<Items>", "</Items>"));
 			std::vector<Character> char_vec = fill_character_vec(EXTRACT_STRING(str, 0, "<Characters>", "</Characters>"));
-			int is_final = std::stoi(EXTRACT_STRING(str, 0, "<Is_Final>", "</Is_Final>"));
-			bool is_final_bool = (is_final == 0) ? false : true;
+			bool is_final = EXTRACT_BOOL(str, 0, "<Is_Final>", "</Is_Final>");
 			std::vector<Door> door_vec = fill_door_vec(EXTRACT_STRING(str, 0, "<Door_List>", "</Door_List>"));
 			
 			//We construct the room object and push it into the room vector.
-			room_vec.push_back(make_shared<Room>(name, description, coordinates, items_vec, char_vec, door_vec, is_final_bool));
+			room_vec.push_back(make_shared<Room>(name, description, coordinates, items_vec, char_vec, door_vec, is_final));
 		}
 		
 	}

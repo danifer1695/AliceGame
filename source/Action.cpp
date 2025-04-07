@@ -204,7 +204,7 @@
 		
 		//Input Parser class sends input in all lower case.
 		//No need to account for case variations
-		if (input == "room" || input == "surroundings"){
+		if (input == "room" || input == "surroundings" || input == "around"){
 			
 			Buffer::Get().add_contents("You're in a ");
 			Buffer::Get().add_contents(current_room->get_description());
@@ -440,6 +440,7 @@
 		
 		Buffer::Get().add_contents("Quitting game. Goodbye.");
 		Screen::Get().refresh();
+		throw 0;
 	}
 	
 //******************************************************************************************************************************

@@ -25,12 +25,10 @@
 			
 			std::string name = EXTRACT_STRING(str, 0, "<Name>", "</Name>");
 			std::string description = EXTRACT_STRING(str, 0, "<Description>", "</Description");
-			int is_enemy_int = std::stoi(EXTRACT_STRING(str, 0, "<Is_Enemy>", "</Is_Enemy>"));
-			//We convert is_enemy_int to a true bool using a conditional expression
-			bool is_enemy_bool = (is_enemy_int == 0) ? false : true;
+			bool is_enemy = EXTRACT_BOOL(str, 0, "<Is_Enemy>", "</Is_Enemy>");
 			std::vector<std::string> dialogue_vec = fill_dialogue_vec(EXTRACT_STRING(str, 0, "<Dialogue>", "</Dialogue>"));
 			
-			character_vec.push_back(make_shared<Character>(name, description, is_enemy_bool, dialogue_vec));
+			character_vec.push_back(make_shared<Character>(name, description, is_enemy, dialogue_vec));
 		}
 	}
 	
