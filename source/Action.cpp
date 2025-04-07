@@ -251,38 +251,9 @@
 
 	void Action::use(const std::string &input){
 		
-		std::string object, target, word, target_temp; 
-		std::unordered_set<std::string> stop_words = {"at", "to", "on", "in", "with", "towards", "up"};
-		//if we get: use "key on door", key is the object, door is the target
-		//word is a variable we will use while extracting words from the string stream
-		//target_temp will hold a candidate word for target while iterating through the stream.
+		std::string object, target; 
 		
-		std::stringstream ss (input);
-		//Now we get the second part of the input.
-		//we have to be able to extract the right word into the target
-		bool found_stop {false};
-		while(ss >> word){
-			//We pass stop words
-			if(stop_words.find(word) != stop_words.end() && !found_stop){
-				//If unordered_set.find() does not find anything it returns unordered_set.end();
-				found_stop = true;
-				continue;
-			}
-			//if target_temp is not empty it means object might be a composite word like "chesire cat" so we add a space
-			if(!found_stop){
-				
-				if(!object.empty())
-					object += " "; 
-				object += word;
-			}	
-			if(found_stop){
-				
-				if(!target_temp.empty())
-					target_temp += " "; 
-				target_temp += word;
-			}
-		}
-		target = target_temp;
+		second_parsing(object, target, input);
 		
 		bool action_success {false};//we will use this to check if action was successful
 		
@@ -555,5 +526,45 @@
 	}
 
 //******************************************************************************************************************************
-// display_characters()
+// second_parsing()
+//******************************************************************************************************************************
+
+	void Action::second_parsing(std::string& object, std::string& target, const std::string& input){
+		
+		std::string word, target_temp; 
+		std::unordered_set<std::string> stop_words = {"at", "to", "on", "in", "with", "towards", "up"};
+		//if we get: use "key on door", key is the object, door is the target
+		//word is a variable we will use while extracting words from the string stream
+		//target_temp will hold a candidate word for target while iterating through the stream.
+		
+		std::stringstream ss (input);
+		//Now we get the second part of the input.
+		//we have to be able to extract the right word into the target
+		bool found_stop {false};
+		while(ss >> word){
+			//We pass stop words
+			if(stop_words.find(word) != stop_words.end() && !found_stop){
+				//If unordered_set.find() does not find anything it returns unordered_set.end();
+				found_stop = true;
+				continue;
+			}
+			//if target_temp is not empty it means object might be a composite word like "chesire cat" so we add a space
+			if(!found_stop){
+				
+				if(!object.empty())
+					object += " "; 
+				object += word;
+			}	
+			if(found_stop){
+				
+				if(!target_temp.empty())
+					target_temp += " "; 
+				target_temp += word;
+			}
+		}
+		target = target_temp;
+	}
+
+//******************************************************************************************************************************
+// 
 //******************************************************************************************************************************

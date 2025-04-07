@@ -33,6 +33,7 @@ private:
 	static bool use_key(const std::string& object, const std::string& target);
 	static std::string find_matching_key_name(const std::vector<Item>& inventory, const Door& door);
 	static void unlock_door(Door& door, const std::string& key_name);
+	static void second_parsing(std::string& object, std::string& target, const std::string& input);
 	
 public:
 	
