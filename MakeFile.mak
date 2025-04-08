@@ -1,12 +1,12 @@
 # Name of the output executable
-TARGET = test.exe
+TARGET = Assignment4.exe
 
 # Compiler and flags
 CXX = g++
 CXXFLAGS = -std=c++20 -static -static-libgcc -static-libstdc++
 
 # All your source files
-SRC = Test01.cpp \
+SRC = Assignment4.cpp \
       source/Events.cpp source/Door.cpp source/Action.cpp source/Buffer.cpp \
       source/Game.cpp source/Player.cpp source/Room.cpp source/Character.cpp \
       source/CharacterDatabase.cpp source/Screen.cpp source/Item.cpp \
@@ -19,6 +19,6 @@ all: $(TARGET)
 $(TARGET): $(SRC)
 	$(CXX) $(CXXFLAGS) $(SRC) -o $(TARGET)
 
-# Clean rule (use 'make clean' to remove the EXE)
+# Clean rule
 clean:
 	del /Q $(TARGET)
