@@ -269,8 +269,8 @@
 				action_success = use_key(object, target);
 			}
 				
-			//if rock is used on armory, we call armory_distraction event
-			else if(ItemDatabase::Get().item_is_of_type(object, "rock") && 
+			//if firecracker is used on armory, we call armory_distraction event
+			else if(ItemDatabase::Get().item_is_of_type(object, "firecracker") && 
 				(target == "armory" || target == "weapons" || target == "shields" || target == "shield" || target.empty())){
 				
 						action_success = Events::Get().armory_distraction();

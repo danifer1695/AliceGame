@@ -1,8 +1,8 @@
 <Item>
 	<ID>1000</ID>
-	<Name>Rock</Name>
-	<Display>There's a rock on the ground.</Display>
-	<Description>A plain old rock you got from a bunch of rubble in your cell. Light enough to be thrown across a room.</Description>
+	<Name>Firecracker, Fire Cracker</Name>
+	<Display>A single firecracker lies on the ground.</Display>
+	<Description>A colorful firecracker you got from the Cunning Fox. Using it will definitely attract everyone's attention so you better be mindful about it!</Description>
 	<Can_Store>1</Can_Store>
 </Item>
 <Item>

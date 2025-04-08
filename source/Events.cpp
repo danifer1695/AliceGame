@@ -108,23 +108,16 @@
 	bool Events::armory_distraction(){
 		
 		//Player has to throw rock from the cell gallery
-			if(TO_LOWER(Player::Get().get_current_room()->get_name()) == "armory"){
+			if(TO_LOWER(Player::Get().get_current_room()->get_name()) != "armory"){
 				
-				//if you throw a rock from inside the armory you get caught
-				Buffer::Get().add_contents("If you throw the rock from this close up you will not have time to escape the guards...\n\n");
-				
-				return false;
-			}
-			else if(TO_LOWER(Player::Get().get_current_room()->get_name()) != "cell gallery"){
-				
-				Buffer::Get().add_contents("You are too far away.\n\n");
+				Buffer::Get().add_contents("You shouldn't use that here.\n\n");
 				return false;
 			}
 			else{
 				
-				Buffer::Get().add_contents("You throw a rock into the armory and hit a shield hanging on the wall. It drops and crashes onto other items, starting a chaotic domino effect that echoes throughout the entire dungeon.\n\n");
+				Buffer::Get().add_contents("With a bit of clever fiddling, you strike two small daggers together, and - pop! - a spark leaps forth, catching the firecracker's fuse. You scurry back to your cell at once. Moments later, a dreadful crack! and a chorus of clattering metal fills the air, as swords and shields tumble every which way.\n\n");
 				Buffer::Get().add_contents("Card Guard: What the bloody hell was that?\n\n");
-				Buffer::Get().add_contents("You hear guards approaching from the Guard's Quarters, so you rush back into your cell.\n\n");
+				Buffer::Get().add_contents("The Card Guards rush out of the Guard's Quarters, alerted by all the chaos you unleashed.\n\n");
 				
 				Buffer::Get().add_contents("Press enter to continue.");
 				
@@ -344,6 +337,11 @@
 		if(!fox->get_talked_to()){
 			
 			Buffer::Get().add_contents(dialogue_database.at("Fox_01"));
+			Buffer::Get().add_contents("\n\nThe Fox handed you a Firecracker!");
+			
+			if(!Player::Get().add_item_to_inventory("firecracker"))
+				GAME_ERROR("Firecracker item not found. Does its name match the one in the item_data list?");
+			
 			fox->set_talked_to(true);
 			Player::Get().set_sweets_quest_started(true);
 			

@@ -4,7 +4,7 @@
 	<Description>a dark cell inside the Queen's castle. The only source of light is a small barred window to the outside. With the exception to the straw matress you awoke on, the room is completely bare.</Description>
 	<Coordinates>(0, 0)</Coordinates>
 	<Characters>Cheshire Cat</Characters>
-	<Items>Rock, Matress, Cell Window</Items>
+	<Items>Matress, Cell Window</Items>
 	<Is_Final>0</Is_Final>
 	<Door_List>
 		<Door>
