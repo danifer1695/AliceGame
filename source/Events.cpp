@@ -302,7 +302,7 @@
 			else if(treasure_found && Player::Get().get_remaining_treasure() != 0){
 				
 				Buffer::Get().add_contents(dialogue_database.at("Cheshire_03"));
-				Buffer::Get().add_contents("\n\nJust " + std::to_string(Player::Get().get_remaining_treasure()) + " more treasures for the grand price!");
+				Buffer::Get().add_contents("\n\nJust " + std::to_string(Player::Get().get_remaining_treasure()) + " more treasures for the grand prize!");
 				
 			}
 			//if player has completed the quest
@@ -315,7 +315,7 @@
 			else{
 				
 				Buffer::Get().add_contents(dialogue_database.at("Cheshire_02"));
-				Buffer::Get().add_contents("\n\nJust " + std::to_string(Player::Get().get_remaining_treasure()) + " more treasures for the grand price!");
+				Buffer::Get().add_contents("\n\nJust " + std::to_string(Player::Get().get_remaining_treasure()) + " more treasures for the grand prize!");
 			}
 		}
 		
@@ -439,9 +439,15 @@
 	
 	Door* Events::choose_door(){
 		
-		Buffer::Get().add_contents("Which door?\n\n");
 		
 		std::vector<Door>* door_vec = &Player::Get().get_current_room()->get_door_vec();
+		
+		//if door_vec only has one element, we dont ask and return the only element in the vector.
+		if(door_vec->size() == 1) {
+			Door* ptr = &door_vec->at(0);
+			return ptr;
+		}
+		Buffer::Get().add_contents("Which door?\n\n");
 		
 		for(auto door : *door_vec){
 			Buffer::Get().add_contents("-" + door.get_points_to() + "\n");

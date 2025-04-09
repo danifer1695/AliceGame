@@ -61,7 +61,7 @@
 </Room>
 <Room>
 	<Name>Armory</Name>
-	<Description>a small room filled with all sorts of military gear. The room is covered corner to corner in racks holding all sorts of bizarre looking weapons and ornate shields. Better be careful, toppling anything over would cause a commotion.</Description>
+	<Description>a small room filled with all sorts of military gear. The room is covered corner to corner in racks holding all sorts of bizarre looking weapons and ornate shields, the sight of which frightens Alice - she hates fights. Better be careful though, toppling anything over would cause a commotion.</Description>
 	<Coordinates>(0, 2)</Coordinates>
 	<Characters></Characters>
 	<Items>Weapons, Beautiful Sword</Items>
@@ -80,7 +80,7 @@
 	</Door_List>
 </Room>
 <Room>
-	<Name>Prison Corridor</Name>
+	<Name>Prison Corridor, Corridor</Name>
 	<Description>a narrow dimly lit corridor connecting the Castle's prison to the rest of the undeground level.</Description>
 	<Coordinates>(-2, 1)(-2, 2)</Coordinates>
 	<Characters>Bill the Lizard</Characters>
@@ -120,7 +120,7 @@
 	</Door_List>
 </Room>
 <Room>
-	<Name>Staff Hallway</Name>
+	<Name>Staff Hallway, Hallway</Name>
 	<Description>a long passage connecting many different rooms. It seems to be used by guards and servants alike as they go on with their daily chores.</Description>
 	<Coordinates>(-2, 3)(-1, 3)</Coordinates>
 	<Characters></Characters>
@@ -165,7 +165,7 @@
 	</Door_List>
 </Room>
 <Room>
-	<Name>Broom Closet</Name>
+	<Name>Broom Closet, Closet</Name>
 	<Description>a tiny broom closet, crammed with brooms, mops, and buckets. On the wall, a key chain hung from a hook, too high to reach.</Description>
 	<Coordinates>(-1, 4)</Coordinates>
 	<Characters></Characters>
@@ -180,7 +180,7 @@
 	</Door_List>
 </Room>
 <Room>
-	<Name>Staff Hall</Name>
+	<Name>Staff Hall, Hall</Name>
 	<Description>a grand, open room; its ceiling soaring twice as high as any you'd seen in the rest of the subterranean level. Chairs and tables were scattered about, a cheerful fire crackled in the chimney, and a few small portraits of former Staff Masters hung on the walls. This, it seemed, was where the castle staff came to rest their weary feet.</Description>
 	<Coordinates>(0, 3)</Coordinates>
 	<Characters>Card Guard, Dodo</Characters>
@@ -210,7 +210,7 @@
 	</Door_List>
 </Room>
 <Room>
-	<Name>Staff Master's Room, smr</Name>
+	<Name>Staff Master's Room, Staff Masters Room, smr</Name>
 	<Description> what seems to be the Castle's staff Master's private quarters. Relatively small for what one would expect for someone of that rank, the room was populated by a neatly tucked bed, a few family portraits on the walls, and a desk overflowing with all sorts of books and documents.</Description>
 	<Coordinates>(1, 3)</Coordinates>
 	<Characters></Characters>

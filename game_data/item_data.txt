@@ -35,8 +35,8 @@
 </Item>
 <Item>
 	<ID>1005</ID>
-	<Name>Beverage, Jar</Name>
-	<Display>There's a jar containing a funny-colored drink.</Display>
+	<Name>Beverage, Jar, Drink</Name>
+	<Display>There's a jar containing a funny-colored beverage.</Display>
 	<Description>A half-empty jar of the drink the Guards favored on their time off - though too much of it seemed to leave them quite drowsy.</Description>
 	<Can_Store>1</Can_Store>
 </Item>
@@ -51,7 +51,7 @@
 	<ID>1007</ID>
 	<Name>Weapons, Shields</Name>
 	<Display></Display>
-	<Description>The room bristled with weapons - swords, spears, and all manner of sharp things - while lavishly decorated shields lined the walls. Best not to touch anything; knocking one over would surely send the Guards rushing in.</Description>
+	<Description>The room bristled with weapons - swords, spears, and all manner of sharp things Alice would not dare touch- while lavishly decorated shields lined the walls. Best not to touch anything; knocking one over would surely send the Guards rushing in.</Description>
 	<Can_Store>0</Can_Store>
 </Item>
 <Item>

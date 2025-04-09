@@ -68,11 +68,13 @@
 		   input == "armory"){
 			
 				Events::Get().unlock_armory();
+				//update current room pointer
+				current_room = Player::Get().get_current_room();
 		}
 
 		//we look for room names in available doors.
 		for(auto& door : current_room->get_door_vec()){
-			if(input == TO_LOWER(door.get_points_to()) || Player::Get().can_teleport()){
+			if(Map::Get().get_room(door.get_points_to())->contains_name(input) || Player::Get().can_teleport()){
 				
 				found = true;
 				if(door.get_is_locked() && !Player::Get().can_teleport()){
@@ -109,6 +111,8 @@
 				GAME_LOG("Enemy present.");
 				Buffer::Get().add_contents("As you step into the room a Card Guard notices you:\n");
 				Events::Get().get_caught();
+				//update current room pointer
+				current_room = Player::Get().get_current_room();
 			
 		}
 		//Check if new room is the final room which ends the game.
@@ -243,6 +247,16 @@
 			Buffer::Get().add_contents(current_room->get_description());
 			Buffer::Get().add_contents("\n\nPress enter to continue.");
 		
+			Screen::Get().refresh();
+			ENTER_TO_CONTINUE;
+			return;
+		}
+		else if(input == "door"){
+			
+			Door* door = Events::Get().choose_door();
+			Buffer::Get().add_contents("Its a door that leads to the " + door->get_points_to() + ".");
+			Buffer::Get().add_contents("\n\nPress enter to go back.");
+			
 			Screen::Get().refresh();
 			ENTER_TO_CONTINUE;
 			return;
