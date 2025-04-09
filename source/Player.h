@@ -24,6 +24,7 @@ private:
 	int current_day {1};
 	int max_days {7};
 	std::shared_ptr<Room> current_room;
+	std::shared_ptr<Room> previous_room;
 	std::shared_ptr<std::vector<Item>> inventory = std::make_shared<std::vector<Item>>();
 	
 	//Collectibles
@@ -60,6 +61,7 @@ public:
 	int get_current_day() {return current_day;}
 	int get_max_days() {return max_days;}
 	std::shared_ptr<Room>& get_current_room() {return current_room;}
+	std::shared_ptr<Room>& get_previous_room() {return previous_room;}
 	std::shared_ptr<std::vector<Item>> get_inventory() {return inventory;}
 	bool can_teleport() {return teleport;}
 	bool is_disguised() {return disguised;}
@@ -76,6 +78,7 @@ public:
 	
 	//setters
 	void set_current_room(const std::shared_ptr<Room> &room){current_room = room;}
+	void set_previous_room(const std::shared_ptr<Room> &room){previous_room = room;}
 	void set_current_room(const std::string &name); //set by name
 	void set_current_day(const int &day){current_day = day;}
 	void set_disguised(const bool &input){disguised = input;}

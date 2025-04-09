@@ -459,7 +459,7 @@
 			}
 		}
 		
-		GAME_ERROR("Door to " + response + " not found.");
+		GAME_ERROR("Sorry, I do not know what you mean by \"" + response + "\".");
 		throw std::runtime_error("Door to " + response + " not found.");
 	}
 	
@@ -474,7 +474,7 @@
 		Buffer::Get().add_contents("\nIn this game you will take control of Alice and guide her out of the Queen of Hearts' Castle Prison. To achieve that you will talk to characters, use tools and interact with the environment. Interactable characters and items will often be listed for you in the game screen as such:\n");
 		Buffer::Get().add_contents("\"There's a rock on the ground.\"\n");
 		Buffer::Get().add_contents("\"These Characters are present: Cheshire Cat\"\n");
-		Buffer::Get().add_contents("But this will not necessarily be always the case. Some interactable objects will only be implied by the description of the environment around you, so you are invited to use your imagination and try different things out!");
+		Buffer::Get().add_contents("But this will not necessarily always be the case. Some interactive objects will only be implied by the description of the environment around you, so you are invited to use your imagination and try different things out!");
 		
 		Buffer::Get().add_contents("\n\nPress enter to continue.");
 		Screen::Get().refresh();

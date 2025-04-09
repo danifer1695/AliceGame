@@ -6,7 +6,7 @@
 
 	static std::unordered_map<std::string, std::string> dialogue_database = {
 		
-		{"Cheshire_01", "Cheshire Cat: Hello, little one. My, my, you do seem to have landed yourself in quite the pickle. But no need to fret. Here's a little something that might just do the trick to kickstart your adventure on the right footing."},
+		{"Cheshire_01", "Cheshire Cat: Hello, little one. My, my, you do seem to have landed yourself in quite the pickle. But no need to fret. Here's a little something that might just do the trick to kickstart your adventure on the right foot."},
 		{"Cheshire_02", "Cheshire Cat: That's all for now - but if you happen to stumble upon any treasure in your little wanderings, do bring it to me. I do so love a good trinket, and I might just have something useful to offer in return."},
 		{"Cheshire_03", "Cheshire Cat: A wonderful gift, little child."},
 		{"Cheshire_04", "Cheshire Cat: Such delightful treasures you've brought me! A fair trade is only fitting. Here - this should be just the thing to see you out of your little predicament once and for all."},

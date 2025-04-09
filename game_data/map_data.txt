@@ -1,7 +1,7 @@
 <Teleport>0</Teleport>
 <Room>
 	<Name>Cell</Name>
-	<Description>a dark cell inside the Queen's castle. The only source of light is a small barred window to the outside. With the exception to the straw matress you awoke on, the room is completely bare.</Description>
+	<Description>a dark cell inside the Queen's castle. The only source of light is a small barred window to the outside. With the exception of the straw matress you awoke on, the room is completely bare.</Description>
 	<Coordinates>(0, 0)</Coordinates>
 	<Characters>Cheshire Cat</Characters>
 	<Items>Matress, Cell Window</Items>
@@ -15,7 +15,7 @@
 	</Door_List>
 </Room>
 <Room>
-	<Name>Cell Gallery</Name>
+	<Name>Cell Gallery, Gallery</Name>
 	<Description>a long room featuring a row of cells lined up one after another. All of them occupied by shady creatures and individuals, except for the one you got out of.</Description>
 	<Coordinates>(0, 1)(-1,1)</Coordinates>
 	<Characters>Cunning Fox</Characters>

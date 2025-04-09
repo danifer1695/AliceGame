@@ -20,7 +20,7 @@
 		
 		std::string lower_case_input = TO_LOWER(raw_input);
 		std::stringstream ss (lower_case_input);
-		std::unordered_set<std::string> stop_words = {"at", "in", "the", "to", "with", "towards", "up"};
+		std::unordered_set<std::string> stop_words = {"at", "in", "the", "to", "with", "towards", "up", "into"};
 		std::string word, object_temp;
 		
 		//Extract first word into "verb"
@@ -67,7 +67,16 @@
 		//We return false if player selects to quit.
 		
 		if(verb == "go" || verb == "move" || verb == "enter"){
+			//Set previous room to current room, before updating it.
+			auto previous_room = Player::Get().get_current_room();
+			
 			Action::move_to(object);
+			
+			Player::Get().set_previous_room(previous_room);
+			return true;
+		}
+		else if(verb == "return"){
+			Action::move_to("back");
 			return true;
 		}
 		else if(verb == "inspect" || verb == "look" || verb == "investigate"){

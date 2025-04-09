@@ -17,7 +17,8 @@
 //******************************************************************************************************************************
 
 	void Player::initialize(){
-		current_room = Map::Get().get_room_at_coor(Coordinates (0, 0));
+		current_room = Map::Get().get_room("Cell");
+		previous_room = nullptr;
 		if(teleport) GAME_LOG("Teleport active");
 	}
 

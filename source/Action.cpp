@@ -6,40 +6,72 @@
 
 	void Action::move_to(const std::string &input){
 		
+		std::shared_ptr<Room> current_room = Player::Get().get_current_room();
+		std::shared_ptr<Room> previous_room = Player::Get().get_previous_room();
+		
 		bool found {false};//checks whether the input is a valid room
+		
+		if(input == "back" || input == "last room" || input == "previous room"){
+			
+			if(previous_room != nullptr) 
+				Player::Get().set_current_room(previous_room);
+			else
+				Buffer::Get().add_contents("Go back where?\n\n");
+				
+			previous_room->print();
+			return;
+		}
+		
+		if(input == "door"){
+			
+			Door* door = Events::Get().choose_door();
+			//check whether door is locked, if it is, return.
+			if(door->get_is_locked() && !Player::Get().can_teleport()){
+				if(!door->get_key_name().empty())
+					Buffer::Get().add_contents("The door is locked. It needs a " + door->get_key_name() + ".\n\n");
+				else
+					Buffer::Get().add_contents("The door is locked from the other side.\n\n");
+					
+				current_room->print();
+				return;
+			}
+			
+			Player::Get().set_current_room(door->get_points_to());
+			current_room = Player::Get().get_current_room();
+			current_room->print();
+			return;
+		}
 		
 		//if name is invalid
 		if(!Map::Get().contains_room(input)){
 			Buffer::Get().add_contents("Go where?\n\n");
 			GAME_ERROR("Room \"" + input + "\" not found.");
-			Player::Get().get_current_room()->print();
+			current_room->print();
 			return;
 		}
 		
 		//When we go to the Outside, first we check the player holds the permit, by calling Events::guard_permit_check
-		if(Player::Get().get_current_room()->get_name() == "Staff Hall" &&
+		if(current_room->get_name() == "Staff Hall" &&
 		  input == "outside"){
 			
 			//if player holds the Break Permit, they will be allowed to leave
 			if(!Events::Get().guard_permit_check()){
 				
-				Player::Get().get_current_room()->print();
+				current_room->print();
 				return;
 			}
 		 }
 		
-		
 		//We unlock door to Staff hall in Armory when entering Armory from Staff Hallway
-		if(Player::Get().get_current_room()->get_name() == "Staff Hall" &&
-		   Player::Get().get_current_room()->contains_character("Card Guard") &&
+		if(current_room->get_name() == "Staff Hall" &&
+		   current_room->contains_character("Card Guard") &&
 		   input == "armory"){
 			
 				Events::Get().unlock_armory();
 		}
-		
 
 		//we look for room names in available doors.
-		for(auto& door : Player::Get().get_current_room()->get_door_vec()){
+		for(auto& door : current_room->get_door_vec()){
 			if(input == TO_LOWER(door.get_points_to()) || Player::Get().can_teleport()){
 				
 				found = true;
@@ -53,11 +85,12 @@
 				}
 				
 				//set room to visited before we change current rooms
-				if(!Player::Get().get_current_room()->get_has_been_visited())
-					Player::Get().get_current_room()->set_has_been_visited(true);	
+				if(!current_room->get_has_been_visited())
+					current_room->set_has_been_visited(true);	
 				
 				//set current room to the one we're going to
 				Player::Get().set_current_room(input);
+				current_room = Player::Get().get_current_room();
 				break;
 			}
 		}
@@ -66,12 +99,12 @@
 		if(!found){
 			Buffer::Get().add_contents("Go where?\n\n");
 			GAME_ERROR("Room \"" + input + "\" not found.");
-			Player::Get().get_current_room()->print();
+			current_room->print();
 			return;
 		}
 	
 		//Check if there is an enemy in the room
-		if(Player::Get().get_current_room()->contains_enemy() &&
+		if(current_room->contains_enemy() &&
 		   !Player::Get().is_disguised()){
 				GAME_LOG("Enemy present.");
 				Buffer::Get().add_contents("As you step into the room a Card Guard notices you:\n");
@@ -79,7 +112,7 @@
 			
 		}
 		//Check if new room is the final room which ends the game.
-		if(Player::Get().get_current_room()->get_is_final()){
+		if(current_room->get_is_final()){
 			GAME_LOG("Player made it to the goal.");
 			Events::Get().end_game();
 			return;
@@ -87,12 +120,12 @@
 		
 		//Random enemy spawn every time we change room, except when moving into
 		//the room where the spawning happens
-		if(Player::Get().get_current_room()->get_name() != "Staff Hallway"){
+		if(current_room->get_name() != "Staff Hallway"){
 			Events::Get().random_character_spawn("Staff Hallway");
 		}
 		
 		//When we move to a new room we automatically display
-		Player::Get().get_current_room()->print();
+		current_room->print();
 		
 	}
 
@@ -455,7 +488,7 @@
 			if(!item.contains_name("key") || !item.contains_name(object)) continue;
 			
 			//if player types "door" or just "use key/key name"
-			if(target == "door" || target.empty()){
+			if(target == "door" || target == "the door" || target.empty()){
 			
 				try{					
 					//this gives the player a list of available doors and returns their choice
@@ -495,7 +528,7 @@
 		}
 		
 		//if action was unsuccessful we print a message letting the player know
-		Buffer::Get().add_contents("The key did not work on that door.!\n\n");
+		Buffer::Get().add_contents("Sorry, I don't know what \"" + target + "\" is.\n\n");
 		return false;
 	}
 	
@@ -532,7 +565,7 @@
 	void Action::second_parsing(std::string& object, std::string& target, const std::string& input){
 		
 		std::string word, target_temp; 
-		std::unordered_set<std::string> stop_words = {"at", "to", "on", "in", "with", "towards", "up"};
+		std::unordered_set<std::string> stop_words = {"at", "to", "on", "in", "with", "towards", "up", "the"};
 		//if we get: use "key on door", key is the object, door is the target
 		//word is a variable we will use while extracting words from the string stream
 		//target_temp will hold a candidate word for target while iterating through the stream.
