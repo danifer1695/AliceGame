@@ -140,10 +140,39 @@
 
 	void Action::take(const std::string &input){
 		
+		std::shared_ptr<Room> current_room = Player::Get().get_current_room();
+		
+		if(input == "all" || input == "all items"){
+			
+			//we iterate in reverse to be able to remove items without issues
+			auto it = current_room->get_items_vec().rbegin();
+			bool found {false};
+			
+			while(it != current_room->get_items_vec().rend()){
+				//we only take items we can store
+				if(it->get_store()){
+					
+					Player::Get().add_item_to_inventory(it->get_name());
+					current_room->remove_item(it->get_name());
+					found = true;
+				}
+				it++;
+			}
+			
+			if(!found){
+				Buffer::Get().add_contents("There are no items to take.\n\n");
+				current_room->print();
+				return;
+			}
+			
+			Buffer::Get().add_contents("You took all items.\n\n");
+			current_room->print();
+			return;
+		}
 		//we use that id to remove the item from the current room, using Room'
 		//remove_item() method
 		try{
-			std::string item_name = Player::Get().get_current_room()->get_item_by_name(input).get_name();	
+			std::string item_name = current_room->get_item_by_name(input).get_name();	
 			std::string item_name_lower = TO_LOWER(item_name);	
 			
 			//check if item can be stored
@@ -155,7 +184,7 @@
 			
 			Player::Get().add_item_to_inventory(item_name_lower);
 			
-			Player::Get().get_current_room()->remove_item(item_name_lower);
+			current_room->remove_item(item_name_lower);
 			
 			Buffer::Get().add_contents("You added " + item_name + " to your inventory.\n\n");
 		}
@@ -163,7 +192,7 @@
 		catch(std::exception &ex){
 			
 			GAME_ERROR(ex.what());
-			Buffer::Get().add_contents("There is no " + input + " around to take.\n\n");
+			Buffer::Get().add_contents("Sorry, I'm not sure what you meant by \"" + input + "\".\n\n");
 		}
 			
 		
@@ -241,7 +270,7 @@
 		
 		//Input Parser class sends input in all lower case.
 		//No need to account for case variations
-		if (input == "room" || input == "surroundings" || input == "around"){
+		if (input == "room" || input == "surroundings" || input == "around" || input == ""){
 			
 			Buffer::Get().add_contents("You're in a ");
 			Buffer::Get().add_contents(current_room->get_description());
@@ -273,7 +302,7 @@
 			if(current_room->contains_item(input) ||
 				Player::Get().contains_item_in_inventory(input)){
 				
-				std::string description = ItemDatabase::Get().get_item_by_name(input).get_description();
+				std::string description = current_room->get_item_by_name(input).get_description();
 				Buffer::Get().add_contents(description);
 				Buffer::Get().add_contents("\n\nPress enter to continue.");
 				
@@ -532,7 +561,7 @@
 			for(auto& door : Player::Get().get_current_room()->get_door_vec()){
 				
 				//we check every door in the room to see if its name matches the input
-				if(target == TO_LOWER(door.get_points_to()) && 
+				if(Map::Get().get_room(door.get_points_to())->contains_name(target) && 
 					door.get_is_locked()){
 					
 					std::string key_name = (object == "key") ? find_matching_key_name(*inventory, door) : object;

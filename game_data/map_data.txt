@@ -1,4 +1,4 @@
-<Teleport>0</Teleport>
+<Teleport>1</Teleport>
 <Room>
 	<Name>Cell</Name>
 	<Description>a dark cell inside the Queen's castle. The only source of light is a small barred window to the outside. With the exception of the straw matress you awoke on, the room is completely bare.</Description>
@@ -49,7 +49,7 @@
 	<Description>a room where the Prison guards likely pass their time when idle. There are some round wooden tables with half emptied jars, dirty dishes and playing cards.</Description>
 	<Coordinates>(1, 1)</Coordinates>
 	<Characters>Card Guard</Characters>
-	<Items>Spade Key, Beverage</Items>
+	<Items>Spade Key, Beverage, Guard Note</Items>
 	<Is_Final>0</Is_Final>
 	<Door_List>
 		<Door>

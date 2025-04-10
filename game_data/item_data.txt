@@ -56,7 +56,7 @@
 </Item>
 <Item>
 	<ID>1008</ID>
-	<Name>Key Chain, Keys, key</Name>
+	<Name>Key Chain, Keychain, Keys, key</Name>
 	<Display></Display>
 	<Description>A key chain dangles from a hook on the wall. Far too high to reach with bare hands, Alice will need the help of something long and pointy to retrieve them.</Description>
 	<Can_Store>0</Can_Store>
@@ -133,7 +133,7 @@
 </Item>
 <Item>
 	<ID>1019</ID>
-	<Name>Coin, Chocolate Coin, Golden Coin, item_sweet</Name>
+	<Name>Chocolate Coin, Coin, Golden Coin, item_sweet</Name>
 	<Display></Display>
 	<Description>A shimmering Gold Coin.But a closer look reveals the truth: it's merely a chocolate coin, wrapped in a layer of shiny foil.</Description>
 	<Can_Store>1</Can_Store>
@@ -171,5 +171,12 @@
 	<Name>Shelves, Shelf</Name>
 	<Display></Display>
 	<Description>A row of shelves containing a diverse cast of objects necessary for the Castle's proper maintenance. Unfortunately, none of it looks like it would be of any use in your quest.</Description>
+	<Can_Store>0</Can_Store>
+</Item>
+<Item>
+	<ID>1025</ID>
+	<Name>Guard Note, Note</Name>
+	<Display>There's a hand-written note stuck to the wall.</Display>
+	<Description>A hand-written note signed by the Staff Master. It reads: "To all Guard personnel - Kindly refrain from partaking in that odd beverage of yours whilst on duty. I'm quite tired of finding you passed out about the hallways after a single sip. It's unseemly, and the dropped spears are doing dreadful harm to Her Majesty's furniture. Do try to behave yourselves. -The Staff Master".</Description>
 	<Can_Store>0</Can_Store>
 </Item>

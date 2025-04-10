@@ -16,7 +16,7 @@
 	
 	void Input_Parser::get_words(std::string raw_input){
 		
-		GAME_LOG("Player entered: " + raw_input);
+		if(!raw_input.empty()) GAME_LOG("Player entered: " + raw_input);
 		
 		std::string lower_case_input = TO_LOWER(raw_input);
 		std::stringstream ss (lower_case_input);
@@ -79,7 +79,7 @@
 			Action::move_to("back");
 			return true;
 		}
-		else if(verb == "inspect" || verb == "look" || verb == "investigate"){
+		else if(verb == "inspect" || verb == "look" || verb == "investigate" || verb == "read"){
 			Action::inspect(object);
 			return true;
 		}

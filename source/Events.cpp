@@ -78,9 +78,9 @@
 	
 	void Events::end_game(){
 		game->set_is_running(false);
-		Buffer::Get().add_contents("You finally made it out of the castle. And so, as you run towards freedom, your adventure comes to a close.\n");
+		Buffer::Get().add_contents("Congratulations! You finally made it out of the castle. And so, as you run towards freedom, your adventure comes to a close.\n");
 		Buffer::Get().add_contents("THE END\n\n");
-		Buffer::Get().add_contents("Press enter to exit the game.");
+		Buffer::Get().add_contents("Thank you for playing! Press enter to exit the game.");
 		
 		Screen::Get().refresh();
 		ENTER_TO_CONTINUE;
@@ -237,8 +237,11 @@
 	
 	void Events::unlock_armory(){
 		
-		Map::Get().get_room("Guard's Quarters")->add_character("Card Guard");
-		Map::Get().get_room("Armory")->remove_character("Card Guard");
+		if(!Map::Get().get_room("Guard's Quarters")->contains_character("Card Guard"))
+			Map::Get().get_room("Guard's Quarters")->add_character("Card Guard");
+		
+		if(Map::Get().get_room("Armory")->contains_character("Card Guard"))
+			Map::Get().get_room("Armory")->remove_character("Card Guard");
 		
 		try{
 			
