@@ -32,6 +32,7 @@ public:
 	
 	//Setters
 	void set_is_locked(const bool& locked){is_locked = locked;}
+	void set_points_to(std::string room_name){points_to = room_name;}
 	
 };
 

@@ -125,6 +125,7 @@
 				std::cin.get();
 				
 				Player::Get().set_current_room("Cell");
+				Player::Get().set_previous_room(Map::Get().get_room("Cell Gallery"));
 				Map::Get().get_room("Armory")->add_character("Card Guard");
 				Map::Get().get_room("Guard's Quarters")->remove_character("Card Guard");
 				
@@ -168,7 +169,7 @@
 					character.set_is_conscious(false);
 					
 					Map::Get().get_room("Staff Hallway")->remove_item("Beverage");
-					Map::Get().get_room("Staff Hallway")->add_item("Card Guard Spear");
+					Map::Get().get_room("Staff Hallway")->add_item("Guard's Spear");
 				} 
 			}
 		}
@@ -210,6 +211,7 @@
 							  ItemDatabase::Get().get_item_by_name("Golden Coin")}
 		);
 		Player::Get().get_current_room()->set_has_been_visited(false);
+		Map::Get().get_room("Prison Corridor")->get_door("Dark Room").set_points_to("Linen Room");
 	}
 	
 	
@@ -459,7 +461,7 @@
 		std::getline(std::cin, response);
 		
 		for(auto& door : *door_vec){
-			if(TO_LOWER(door.get_points_to()) == TO_LOWER(response)){
+			if(Map::Get().get_room(door.get_points_to())->contains_name(response)){
 				Door* ptr = &door;
 				return ptr;
 			}

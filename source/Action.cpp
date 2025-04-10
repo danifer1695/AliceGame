@@ -325,9 +325,9 @@
 			}	
 			
 			//if spear is used on key chain
-			else if(ItemDatabase::Get().get_item_by_name("Spear").contains_name(object) && 
+			else if(ItemDatabase::Get().item_is_of_type(object, "Spear") && 
 					Player::Get().get_current_room()->get_name() == "Broom Closet" &&
-					ItemDatabase::Get().get_item_by_name("Key Chain").contains_name(target)){
+					ItemDatabase::Get().item_is_of_type(target, "Key Chain")){
 						
 						Events::Get().get_diamond_key();
 						action_success = true;
@@ -343,10 +343,15 @@
 			//if servant uniform is used
 			else if(ItemDatabase::Get().get_item_by_name("Servant Uniform").contains_name(object)){
 						
-						Player::Get().remove_item_from_inventory(object);
-						Screen::Get().refresh();
-						ENTER_TO_CONTINUE;
-						return;
+						if(Player::Get().contains_item_in_inventory("Servant Uniform")){
+							
+							Events::Get().wear_uniform();
+							
+							Player::Get().remove_item_from_inventory(object);
+							Screen::Get().refresh();
+							ENTER_TO_CONTINUE;
+							return;
+						}
 			}
 			//if beverage is used
 			else if(ItemDatabase::Get().get_item_by_name("Beverage").contains_name(object)){
@@ -406,7 +411,7 @@
 	void Action::peek(const std::string &input){
 		
 		for(auto& door : Player::Get().get_current_room()->get_door_vec()){
-			if(input == TO_LOWER(door.get_points_to())){
+			if(Map::Get().get_room(door.get_points_to())->contains_name(input)){
 				
 				Buffer::Get().add_contents("You peek through the door's key hole:\n");
 				Buffer::Get().add_contents("You see the " + Map::Get().get_room(input)->get_name() + ". It's ");

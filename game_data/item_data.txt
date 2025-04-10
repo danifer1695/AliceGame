@@ -42,8 +42,8 @@
 </Item>
 <Item>
 	<ID>1006</ID>
-	<Name>Card Guard Spear, Spear</Name>
-	<Display>A Card Guard spear lies on the gound.</Display>
+	<Name>Guard's Spear, Guard Spear, Spear</Name>
+	<Display>A Guard's Spear lies on the gound.</Display>
 	<Description>A spear, just like those carried by the Card Guards - long and topped with a sharp spade-shaped head.</Description>
 	<Can_Store>1</Can_Store>
 </Item>
@@ -56,7 +56,7 @@
 </Item>
 <Item>
 	<ID>1008</ID>
-	<Name>Key Chain, Keys</Name>
+	<Name>Key Chain, Keys, key</Name>
 	<Display></Display>
 	<Description>A key chain dangles from a hook on the wall. Far too high to reach with bare hands, Alice will need the help of something long and pointy to retrieve them.</Description>
 	<Can_Store>0</Can_Store>
